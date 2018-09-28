@@ -88,6 +88,18 @@ $ git push origin work-to-submit
 
 You should get a link to the page to submit your PR to the original project.
 
+Here is a demo:
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="/asciinema-player.css" />
+</head>
+<body>
+  <asciinema-player src="/203606.cast" cols="129" rows="37"></asciinema-player>
+  ...
+  <script src="/asciinema-player.js"></script>
+</body>
+</html>
+
 ## How to update your GitHub fork to get new changes from the original project
 
 Assuming you have no new local changes
