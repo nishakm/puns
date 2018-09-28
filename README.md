@@ -153,3 +153,6 @@ $ git push -f origin work-to-submit
 ```
 
 Your PR will be automatically updated.
+
+You can watch a demo here:
+[![asciicast-resolveconflicts](https://asciinema.org/a/203608.png)](https://asciinema.org/a/203608)
