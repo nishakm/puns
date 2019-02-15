@@ -1,6 +1,6 @@
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
 # puns
-A git repository to practice submitting Pull Requests (PRs) to open source project. Also, a collection of puns.
+A git repository to practice submitting Pull Requests (PRs) to an open source project. Also, a collection of puns.
 
 ## What it's about
 
@@ -19,10 +19,10 @@ If you feel there is a problem you have run into that isn't covered in the tutor
 Let me know what operation you want to practice and I will set it up for you. Operations include dealing with conflicts, rebase, merge or updating a PR.
 
 ## Real PRs to this project
-If there are alternate ways to doing these operations or if you have references you would like to share. Submit a PR!
+If there are alternate ways to doing these operations or if you have references you would like to share, please submit a PR!
 
 ## Code of Conduct
-No judgement! Treat everyone like human beings who deserve respect. We were all noobs once.
+No judgement! Treat everyone like human beings who deserve respect. We were all n00bs once.
 
 ## How to configure your git
 Before you do anything, set up your gitconfig!
@@ -48,7 +48,7 @@ Copy the output. Go to your profile picture on the top right corner of your GitH
 
 You have forked the Open Source project you want to contribute to on GitHub. Now what?
 
-Note: all the links below can be copied from the GitHub page of the repo using the top right green button that says `Clone or download`. Make sure it says `Clone with SSH`. If you haven't set up your SSH Keypair using the instructions above, you can still use `Close with HTTPS`. You'll end up entering your username and password a lot though.
+Note: all the links below can be copied from the GitHub page of the repo using the top right green button that says `Clone or download`. Make sure it says `Clone with SSH`. If you haven't set up your SSH Keypair using the instructions above, you can still use `Clone with HTTPS`. You'll end up entering your username and password a lot though.
 
 The original project which you have forked from is called `upstream`.
 
@@ -114,6 +114,8 @@ $ git push -f origin work-to-submit
 ```
 
 Your PR will be automatically updated.
+
+*HOLD UP!* Did someone tell you `-f` or force push was bad? Forced updates on your own fork when nobody else is working on it is fine. If you mess up you can still pull changes from upstream and start fresh. But remember, *never* `git push -f upstream`!
 
 ## How to add a Signed-off-by to your commit message
 A Developer Certificate of Origin (DCO) is required in your commit message. If you have set up your gitconfig, this is easy. Do:
