@@ -93,13 +93,21 @@ Here is a demo:
 
 ## How to update your GitHub fork to get new changes from the original project
 
-Assuming you have no new local changes
+Assuming you have no new local changes: when you run `git status` you should not see files modified or staged for commit.
 
 ```
 $ git pull --rebase
 ```
 
-## How to update your commit
+But what if you do have files that are modified? Use the `git stash` to save your changes.
+
+```
+$ git stash push
+$ git pull --rebase
+$ git stash pop
+```
+
+## How to update your commit with changes to files
 The maintainer of the original project asks you to make some changes to your PR. You've gone ahead and made the changes to the files. Now:
 
 ```
