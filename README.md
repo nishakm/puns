@@ -54,6 +54,7 @@ The original project which you have forked from is called `upstream`.
 
 ```
 $ git clone <your clone>
+$ cd puns
 $ git remote add upstream git@github.com:nishakm/puns.git
 $ git fetch upstream
 $ git checkout -b work-to-submit upstream/master
