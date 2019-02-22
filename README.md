@@ -28,8 +28,8 @@ No judgement! Treat everyone like human beings who deserve respect. We were all 
 Before you do anything, set up your gitconfig!
 
 ```
-$ git config --global user.name="Pun Princess"
-$ git config --global user.email=punprincess@punworld.net
+$ git config --global user.name "Pun Princess"
+$ git config --global user.email punprincess@punworld.net
 ```
 
 ## How to not enter your username and password everytime you interact with GitHub from the command line
