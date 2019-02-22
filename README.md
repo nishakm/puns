@@ -167,3 +167,23 @@ Your PR will be automatically updated.
 
 You can watch a demo here:
 [![asciicast-resolveconflicts](https://asciinema.org/a/203608.png)](https://asciinema.org/a/203608)
+
+## How to make your master catch up with upstream's master
+You may have noticed that we have been working on top of the upstream's branches and not your fork's copy of the upstream's branches. So after a while, you would probably want your fork to match upstream. This is an operation that uses git's [`plumbing` rather than `porcelain`](https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain).
+
+```
+$ git checkout -b up upstream/master
+Branch 'up' set up to track remote branch 'master' from 'upstream'.
+Switched to a new branch 'up'
+$ git push origin up:refs/heads/master
+```
+
+Why not `git push origin master`? Well, `master` is pointing to the tip of the fork's master branch which is already up to date with the remote's `master`, so there isn't anything for git to do. `git push origin up:refs/heads/master` pushes your local copy of upstream/master to the remote `origin` to a specific branch reference called `refs/heads/master` which is your remote's actual master branch.
+
+Now to update your local master branch:
+```
+$ git checkout master
+$ git pull
+```
+
+If you have never worked on this branch, the pull should succeed. You can do this for any upstream branch.
