@@ -271,6 +271,21 @@ You probably want to make this more readable. After editing, save using your tex
 $ git push -f origin work-to-submit
 ```
 
+## How to undo your commits
+If you want to undo your commits while still keeping the changes to your files:
+
+```
+$ git reset HEAD~<count commits from tip of working branch to the last commit you want to undo>
+```
+
+For example, you want to undo the last commit you made on the branch, do:
+
+```
+$ git reset HEAD~1
+```
+
+*What is this HEAD?* HEAD points to the tip of your current working branch. Run `git log` to quickly get your bearings. HEAD will be the first commit that comes up.
+
 ## How to make your master catch up with upstream's master
 You may have noticed that we have been working on top of the upstream's branches and not your fork's copy of the upstream's branches. So after a while, you would probably want your fork to match upstream. This is an operation that uses git's [`plumbing` rather than `porcelain`](https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain).
 
