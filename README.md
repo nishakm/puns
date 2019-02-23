@@ -286,6 +286,39 @@ $ git reset HEAD~1
 
 *What is this HEAD?* HEAD points to the tip of your current working branch. Run `git log` to quickly get your bearings. HEAD will be the first commit that comes up.
 
+## How to move your commit to another branch on upstream
+Perhaps development as moved to another branch and the maintainer would like you to submit your PR to another branch. You want that commit to cleanly apply on that development branch before submitting. In this case you may want to close your current PR as you will need to create another branch with a different name than the one you started with.
+
+First, make sure the desired upstream branch is downloaded:
+
+```
+$ git remote update --prune
+```
+
+Then, copy the commit hash (the numbers at the beginning of the commit message):
+
+```
+$ git log
+```
+
+Then, checkout a new branch that tracks the desired branch:
+
+```
+$ git checkout -b work-to-submit upstream/development
+```
+
+Now run:
+
+```
+$ git cherry-pick <hash you had copied>
+```
+
+Now push to your fork and submit a PR as before:
+
+```
+$ git push origin work-to-submit
+```
+
 ## How to make your master catch up with upstream's master
 You may have noticed that we have been working on top of the upstream's branches and not your fork's copy of the upstream's branches. So after a while, you would probably want your fork to match upstream. This is an operation that uses git's [`plumbing` rather than `porcelain`](https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain).
 
