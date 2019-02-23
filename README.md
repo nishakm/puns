@@ -168,6 +168,109 @@ Your PR will be automatically updated.
 You can watch a demo here:
 [![asciicast-resolveconflicts](https://asciinema.org/a/203608.png)](https://asciinema.org/a/203608)
 
+## How to combine two or more commits into one (squash)
+Sometimes, the maintainer will ask you to change something in your commit, and you may instead add another commit to your PR (maybe you didn't know about force pushes). The maintainer may then ask you to squash your commits, that means combining your commits into one big commit (we won't go into reasons why a maintainer may as you to do this - there are several reasons why). This is where `git rebase -i` helps:
+
+```
+$ git rebase -i HEAD~<count from HEAD to the first commit on your PR branch>
+```
+
+For example, you submitted 3 commits in your PR. To squash all 3 you can run:
+
+```
+$ git rebase -i HEAD~3
+```
+
+Running this will open up your default editor. It will show something like this:
+
+```
+pick 4e9a282 Added bark pun to dogs <-- first commit
+pick ae74d75 Added sniffing pun to dogs <-- second commit
+pick 3344294 Added howl pun to dogs <-- third commit
+
+# Rebase eb0ef4c..3344294 onto eb0ef4c (3 commands)
+#
+# Commands:
+# p, pick <commit> = use commit
+# r, reword <commit> = use commit, but edit the commit message
+# e, edit <commit> = use commit, but stop for amending
+# s, squash <commit> = use commit, but meld into previous commit
+# f, fixup <commit> = like "squash", but discard this commit's log message
+# x, exec <command> = run command (the rest of the line) using shell
+# b, break = stop here (continue rebase later with 'git rebase --continue')
+# d, drop <commit> = remove commit
+# l, label <label> = label current HEAD with a name
+# t, reset <label> = reset HEAD to a label
+# m, merge [-C <commit> | -c <commit>] <label> [# <oneline>]
+# .       create a merge commit using the original merge commit's
+# .       message (or the oneline, if no original merge commit was
+# .       specified). Use -c <commit> to reword the commit message.
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+#
+# Note that empty commits are commented out
+```
+
+To combine all 3 together, change the second and third commit to `squash`. Then save the file via your text editor.
+
+```
+pick 4e9a282 Added bark pun to dogs
+squash ae74d75 Added sniffing pun to dogs
+squash 3344294 Added howl pun to dogs
+```
+   
+You should get something like this:
+
+```
+# This is a combination of 3 commits.
+# This is the 1st commit message:
+
+Added bark pun to dogs
+
+Signed-off-by: Nisha K <nishak@vmware.com>
+
+# This is the commit message #2:
+
+Added sniffing pun to dogs
+
+Signed-off-by: Nisha K <nishak@vmware.com>
+
+# This is the commit message #3:
+
+Added howl pun to dogs
+
+Signed-off-by: Nisha K <nishak@vmware.com>
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+```
+
+As the message says - anything with `#` at the beginning will be ignored. So imagine your commit message looking like this:
+
+```
+Added bark pun to dogs
+
+Signed-off-by: Nisha K <nishak@vmware.com>
+
+Added sniffing pun to dogs
+
+Signed-off-by: Nisha K <nishak@vmware.com>
+
+Added howl pun to dogs
+
+Signed-off-by: Nisha K <nishak@vmware.com>
+```
+
+You probably want to make this more readable. After editing, save using your text editor. Now you can resubmit your PR:
+
+```
+$ git push -f origin work-to-submit
+```
+
 ## How to make your master catch up with upstream's master
 You may have noticed that we have been working on top of the upstream's branches and not your fork's copy of the upstream's branches. So after a while, you would probably want your fork to match upstream. This is an operation that uses git's [`plumbing` rather than `porcelain`](https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain).
 
