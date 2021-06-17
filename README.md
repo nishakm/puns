@@ -57,7 +57,7 @@ $ git clone <your clone>
 $ cd puns
 $ git remote add upstream git@github.com:nishakm/puns.git
 $ git fetch upstream
-$ git checkout -b work-to-submit upstream/master
+$ git checkout -b work-to-submit upstream/main
 ```
 
 Once you've completed your work, it's time to commit your changes.
@@ -319,21 +319,21 @@ Now push to your fork and submit a PR as before:
 $ git push origin work-to-submit
 ```
 
-## How to make your master catch up with upstream's master
+## How to make your main catch up with upstream's main
 You may have noticed that we have been working on top of the upstream's branches and not your fork's copy of the upstream's branches. So after a while, you would probably want your fork to match upstream. This is an operation that uses git's [`plumbing` rather than `porcelain`](https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain).
 
 ```
-$ git checkout -b up upstream/master
-Branch 'up' set up to track remote branch 'master' from 'upstream'.
+$ git checkout -b up upstream/main
+Branch 'up' set up to track remote branch 'main' from 'upstream'.
 Switched to a new branch 'up'
-$ git push origin up:refs/heads/master
+$ git push origin up:refs/heads/main
 ```
 
-Why not `git push origin master`? Well, `master` is pointing to the tip of the fork's master branch which is already up to date with the remote's `master`, so there isn't anything for git to do. `git push origin up:refs/heads/master` pushes your local copy of upstream/master to the remote `origin` to a specific branch reference called `refs/heads/master` which is your remote's actual master branch.
+Why not `git push origin main`? Well, `main` is pointing to the tip of the fork's main branch which is already up to date with the remote's `main`, so there isn't anything for git to do. `git push origin up:refs/heads/main` pushes your local copy of upstream/main to the remote `origin` to a specific branch reference called `refs/heads/main` which is your remote's actual main branch.
 
-Now to update your local master branch:
+Now to update your local main branch:
 ```
-$ git checkout master
+$ git checkout main
 $ git pull
 ```
 
